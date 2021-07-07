@@ -1,0 +1,25 @@
+   {% extends 'JAGUARAPP/Layout.html' %}
+   
+   {% load static %}
+
+    {% block content %}
+            <h1 style="text-align: center"> Productos </h1>
+                <h2>aca se tiene que ver solo un producto</h2>
+
+                {% for producto in productos %}
+                    
+                   <p>{{producto.titulo}}</p>
+                   <p>{{producto.descripcion}}
+                   <p>{{producto.precio}}</p>
+                   <div>
+                   
+                        <a href="{% url 'agregar' producto.id %}" class="btn btn-success">Agregar al carrito</a>
+
+                   </div>
+
+                {% endfor %}
+
+                <p>{{productos}}</p>
+        
+
+    {% endblock %}

@@ -1,0 +1,26 @@
+   {% extends 'JAGUARAPP/Layout.html' %}
+   
+   {% load static %}
+
+    {% block content %}
+            <h1 style="text-align: center"> Carrito </h1>
+                <h2>aca se tiene que ver el carrito</h2>
+        {% if request.session.carro.items %}
+            {% for key, value in request.session.carro.items %}
+                <h2> {{value.titulo}} </h2>
+                <h2> {{value.cantidad}} </h2>
+                <h2> {{value.precio}} </h2>
+                <a href="{% url 'agregar' value.producto_id %}" class="btn btn-sm btn-success">+</a>
+                <a href="{% url 'restar' value.producto_id %}" class="btn btn-sm btn-success">-</a>
+                <a href="{% url 'eliminar' value.producto_id %}" class="btn btn-sm btn-success">eliminar</a>
+                <a href="#" class="btn btn-sm btn-success">Vaciar Carrito</a>
+
+
+            {% endfor %}
+        {% else %}
+            <p>sin productos</p>
+        {% endif %}
+
+        <a href="#" class="btn btn-sm btn-success">finalizar compra</a>
+
+    {% endblock %}
